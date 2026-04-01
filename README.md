@@ -5,7 +5,7 @@
 - It also provides a clear overview of overall profit or loss.
 
 
-# Live : [Visit The Site ](https://personal-finance-tracker-frontend-eight.vercel.app/)
+# Live : [Visit The Site ](https://archi-finance-app-frontend.vercel.app)
 
 ![](appScreenShot1.png)
 ![](appScreenShot2.png)
@@ -32,7 +32,7 @@
 # Setup
 
   ## Clone the repository
-  - git clone https://github.com/Kartikey-Singh-Gahlot/PersonalFinanceTracker.git
+  - git clone https://github.com/Agrawalarchi/archi-finance-app.git
 
   ## Navigate to project
   - cd personal-finance-tracker
@@ -59,7 +59,7 @@
   - "/:id/delete -> Deletion of transaction confirmation page
     
 
-  ## Backend ( Base_URL : https://personal-finance-tracker-backend-tau.vercel.app/transactions )
+  ## Backend ( Base_URL : https://archi-finance-app-backend.vercel.app )
     
   - "GET" : Base_URL / -> Fetches all transactions
   - "POST" : Base_URL / -> Adds new transaction
