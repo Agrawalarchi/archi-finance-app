@@ -8,7 +8,7 @@ export default function EditTransaction(){
 
     useEffect(()=>{
         const getTransactionData = async ()=>{
-            const unProcessed = await fetch(`${import.meta.env.VITE_BackendUrl}/${id}`, {
+            const unProcessed = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${id}`, {
                 method : "GET"
             });
             const processed = await unProcessed.json();

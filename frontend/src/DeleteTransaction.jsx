@@ -11,7 +11,7 @@ export default function DeleteTransaction(){
 
     useEffect(()=>{
         const getTransactionData = async ()=>{
-            const unProcessed = await fetch(`${import.meta.env.VITE_BackendUrl}/${id}`, {
+            const unProcessed = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${id}`, {
                 method : "GET"
             });
             const processed = await unProcessed.json();
@@ -21,7 +21,7 @@ export default function DeleteTransaction(){
     },[])
 
     async function trgrDelete(){
-      const unProcessed = await fetch(`${backendUrl}/${id}`,{
+      const unProcessed = await fetch(`${VITE_BACKEND_URL}/${id}`,{
         method : "DELETE",
       });
       const processed = await unProcessed.json();

@@ -16,7 +16,7 @@ export default function Transaction(){
 
     useEffect(()=>{
       const getTransactionData = async ()=>{
-        const unProcessed = await fetch(import.meta.env.VITE_BackendUrl, {
+        const unProcessed = await fetch(import.meta.env.VITE_BACKEND_URL, {
           method :"GET"
         });
         const processed = await unProcessed.json();

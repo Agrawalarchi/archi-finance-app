@@ -14,7 +14,7 @@ export default function AddTransaction(){
 
     async function trgrSubmission(e){
         e.preventDefault();
-        const unProcessed = await fetch(import.meta.env.VITE_BackendUrl, {
+        const unProcessed = await fetch(import.meta.env.VITE_BACKEND_URL, {
             method : "POST",
             headers: {"Content-Type": "application/json"} ,
             body:JSON.stringify(transactionData)
