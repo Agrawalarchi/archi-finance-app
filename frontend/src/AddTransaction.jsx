@@ -1,0 +1,74 @@
+import {useState} from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { backendUrl } from "./tools";
+
+export default function AddTransaction(){
+    const [transactionData, setTransactionData] = useState({title:"", amount: 0, category:"Income" });
+    const navgiate = useNavigate();
+
+
+    function trgrChange(e){
+        setTransactionData((prev)=>{
+            return {...prev, [e.target.name] : e.target.value};
+        })
+    }
+
+    async function trgrSubmission(e){
+        e.preventDefault();
+        const unProcessed = await fetch(import.meta.env.BackendUrl, {
+            method : "POST",
+            headers: {"Content-Type": "application/json"} ,
+            body:JSON.stringify(transactionData)
+        })
+
+        const processed = await unProcessed.json();
+        if(processed.status==true){
+            setTimeout(()=>{
+               alert("Added Successfuly");
+               navgiate('/');
+            },1000)
+            
+        }
+        else{
+            alert(processed.body.message);
+            setTransactionData({title:"", amount: 0, category:"Income" });
+        }
+    }
+
+
+    return (
+        <div className="pages flex flex-col gap-10">
+          <h1 className="text-2xl py-5">Add Transaction</h1>
+          <form action="" className="forms" onSubmit={(e)=>{ trgrSubmission(e)}}>
+                <div className="inputFeildsWrappers">
+                     <label>Title</label>
+                      <input onChange={trgrChange} className="inputFeilds md:w-[400px] w-[200px]" type="text"  name="title" value={transactionData.title} placeholder="Untitled"/>
+                </div>
+
+               <div className="inputFeildsWrappers">
+                    <label htmlFor="">Amount</label>
+                    <input onChange={trgrChange} className="inputFeilds md:w-[400px] w-[200px]" type="number" name="amount" value={transactionData.amount} placeholder="0.00" />
+               </div>
+
+
+               <div className="inputFeildsWrappers">
+                    <label htmlFor="">Catergory</label>
+                    <select onChange={trgrChange}  name="category" className=" inputFeilds  md:w-[400px] w-[200px]" value={transactionData.category}>
+                           <option value="Income"   className="w-full text-center" >Income</option>
+                           <option value="Expense"  className="w-full text-center" >Expense</option>
+                           <option value="Saving"   className="w-full text-center" >Saving</option>
+                     </select>
+               </div>
+               
+                     
+                <button type="submit" className="w-full bg-black  text-white rounded-[4px] my-5 py-1  shadow-[0px_2px_5px_black] hover:scale-[1.01] transition-[200ms_ease-in-out]">Submit</button>
+
+              
+                <div className="w-full flex ">
+                     <button type="button" className="flex text-[12px]  hover:scale-[1.05] transition-[200ms_ease-in-out] min-[780px]:text-[15px] items-center gap-2 cursor-pointer bg-black px-2 py-1  text-white rounded-[4px]"><img className="h-4" src="/backIcon.png"/><Link to={`/`} className="underline">{`Go Back`}</Link></button>
+                </div>
+          </form>
+        </div>
+      
+    )
+}
