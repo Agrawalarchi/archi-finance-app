@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react"
 import {useNavigate, Link, useParams} from "react-router-dom"
-import { backendUrl } from "./tools";
 
 export default function DeleteTransaction(){
 
@@ -12,7 +11,7 @@ export default function DeleteTransaction(){
 
     useEffect(()=>{
         const getTransactionData = async ()=>{
-            const unProcessed = await fetch(`${import.meta.env.BackendUrl}/${id}`, {
+            const unProcessed = await fetch(`${import.meta.env.VITE_BackendUrl}/${id}`, {
                 method : "GET"
             });
             const processed = await unProcessed.json();

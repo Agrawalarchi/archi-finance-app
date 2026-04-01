@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { backendUrl } from "./tools";
 import Chart from "./Chart";
 
 
@@ -17,7 +16,7 @@ export default function Transaction(){
 
     useEffect(()=>{
       const getTransactionData = async ()=>{
-        const unProcessed = await fetch(import.meta.env.BackendUrl, {
+        const unProcessed = await fetch(import.meta.env.VITE_BackendUrl, {
           method :"GET"
         });
         const processed = await unProcessed.json();

@@ -1,6 +1,5 @@
 import {useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { backendUrl } from "./tools";
 
 export default function AddTransaction(){
     const [transactionData, setTransactionData] = useState({title:"", amount: 0, category:"Income" });
@@ -15,7 +14,7 @@ export default function AddTransaction(){
 
     async function trgrSubmission(e){
         e.preventDefault();
-        const unProcessed = await fetch(import.meta.env.BackendUrl, {
+        const unProcessed = await fetch(import.meta.env.VITE_BackendUrl, {
             method : "POST",
             headers: {"Content-Type": "application/json"} ,
             body:JSON.stringify(transactionData)

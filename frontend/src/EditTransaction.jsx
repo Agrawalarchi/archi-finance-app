@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import {useParams, useNavigate, Link} from "react-router-dom";
-import { backendUrl } from "./tools";
 
 export default function EditTransaction(){
     const navigate = useNavigate();
@@ -9,7 +8,7 @@ export default function EditTransaction(){
 
     useEffect(()=>{
         const getTransactionData = async ()=>{
-            const unProcessed = await fetch(`${import.meta.env.BackendUrl}/${id}`, {
+            const unProcessed = await fetch(`${import.meta.env.VITE_BackendUrl}/${id}`, {
                 method : "GET"
             });
             const processed = await unProcessed.json();
